@@ -1,0 +1,97 @@
+Q) Sophia is developing a maritime logistics application that needs to manage boat information and various products. 
+   She needs to view details from the PRODUCTS and BOATS tables to ensure the application is displaying the correct information.
+   You need to list the Boat Name and its color, and describe the PRODUCTS table for its details.
+
+Ans)
+
+DESC BOATS;
+SELECT BoatName, Color FROM BOATS;
+DESC PRODUCTS;
+SELECT * FROM PRODUCTS;
+
+
+Q) Lucas is developing a food delivery system and needs to track customer orders and sailor details. 
+   He needs to view all the data from the CUSTOMERS and SAILORS tables to check for any missing records or incomplete information.
+   You need to list all data from the CUSTOMERS and SAILORS tables.
+
+Ans)
+
+DESC CUSTOMERS;
+DESC SAILORS;
+SELECT * FROM CUSTOMERS;
+SELECT * FROM SAILORS;
+
+
+Q) James is developing an e-commerce system to manage customer orders. He needs to verify customer and order data. 
+   You need to list the CustomerID and Name from the CUSTOMERS table. Additionally, describe the ORDERS table to get a better understanding of the order details.
+
+Ans)
+
+SELECT CustomerID, Name FROM CUSTOMERS;
+DESC ORDERS;
+SELECT * FROM ORDERS WHERE TotalAmount > 300;
+DELETE FROM ORDERS WHERE OrderID = 2;
+
+
+Q) Sophia is developing a maritime logistics application that needs to manage boat information and various products. 
+   She needs to verify product details and boat colors to ensure the application displays the correct information. 
+   You need to list the Boat Name and its color, and describe the PRODUCTS table to get a better understanding of the product details.
+
+Ans)
+
+SELECT BoatName, Color FROM BOATS;
+DESC PRODUCTS;
+SELECT * FROM PRODUCTS WHERE Price > 30;
+DELETE FROM BOATS WHERE BoatName = 'SailMaster';
+
+
+Q) In a company, we need to manage employee details, including their names and cities. 
+   The company also needs to keep track of the managers responsible for the employees. 
+   To ensure data integrity and understand the database structure, you need to examine the table structures and verify all stored data across both employee and manager tables.
+   You need to list Employee name and its city, and also describe the managers of various employees.
+
+Ans)
+
+DESC EMPLOYEES;
+DESC MANAGERS;
+SELECT Name, City FROM EMPLOYEES;
+SELECT * FROM MANAGERS;
+
+
+Q) Olivia is developing a banking system where she needs to track customer deposits and branches. 
+   To get a better understanding of the system, she needs to view the structure of the tables related to deposits and branches.
+   You need to describe the structure of the DEPOSIT and BRANCH tables.
+
+Ans) 
+
+DESC DEPOSIT;
+DESC BRANCH;
+SELECT * FROM DEPOSIT;
+SELECT * FROM BRANCH;
+
+
+Q) Emily is working on a maritime navigation system that tracks sailors and their travel dates. 
+   She needs to verify the travel details and ensure the sailors' data is accurate.
+   You need to list all sailors' names, their travel dates, and the associated TravelID from the TRAVEL table. 
+   Additionally, describe the SAILORS table to get a better understanding of sailor details.
+
+Ans)
+
+SELECT Sailors.SailorID, Travel.TravelDate FROM Sailors Inner Join Travel on Sailors.SailorID = Travel.SailorID;
+DESC SAILORS;
+SELECT * FROM SAILORS WHERE Rating >= 4;
+DELETE FROM TRAVEL WHERE TravelID = 2;
+
+
+Q) Emily is developing a maritime navigation system to track sailors' details and their travel schedules. 
+   She needs to verify the sailor information and their travel dates. 
+   You need to list all sailors' names, their ages, and their ratings from the SAILORS table. 
+   Additionally, describe the TRAVEL table to get a better understanding of travel data.
+
+
+Ans)
+
+SELECT Name, Age, Rating FROM SAILORS;
+DESC  TRAVEL;
+SELECT SailorID, TravelDate FROM TRAVEL;
+DESC SAILORS;

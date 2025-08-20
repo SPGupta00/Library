@@ -1,0 +1,149 @@
+Q) Alex is working on managing data for a restaurant management system. 
+   The database admin has already created Restaurants and Orders. 
+   Alex needs to perform a series of operations to maintain and analyze this data. 
+   The tasks involve inserting records, updating restaurant details, deleting outdated orders, and selecting relevant records based on specific conditions. 
+   The table structure is shown below:
+
+Ans)
+
+INSERT INTO Restaurants (RestaurantID, RestaurantName, Location, CuisineType)
+VALUES (1, 'Pasta Paradise', 'New York', 'Italian');
+INSERT INTO Restaurants (RestaurantID, RestaurantName, Location, CuisineType)
+VALUES (2, 'Sushi World', 'Tokyo', 'Japanese');
+INSERT INTO Restaurants (RestaurantID, RestaurantName, Location, CuisineType)
+VALUES (3, 'Taco Haven', 'Los Angeles', 'Mexican');
+INSERT INTO Restaurants (RestaurantID, RestaurantName, Location, CuisineType)
+VALUES (4, 'Curry Corner', 'London', 'Indian');
+INSERT INTO Restaurants (RestaurantID, RestaurantName, Location, CuisineType)
+VALUES (6, 'Pasta Express', 'Chicago', 'Italian');
+
+
+INSERT INTO Orders (OrderID, RestaurantID, CustomerID, OrderDate, Amount)
+Values (1, 1, 101, TO_DATE('2024-07-15', 'YYYY-MM-DD'), 45);
+INSERT INTO Orders (OrderID, RestaurantID, CustomerID, OrderDate, Amount)
+Values (2, 2, 102, TO_DATE('2024-06-20', 'YYYY-MM-DD'), 55);
+INSERT INTO Orders (OrderID, RestaurantID, CustomerID, OrderDate, Amount)
+Values (5, 5, 105, TO_DATE('2024-06-30', 'YYYY-MM-DD'), 25);
+INSERT INTO Orders (OrderID, RestaurantID, CustomerID, OrderDate, Amount)
+Values (6, 6, 106, TO_DATE('2024-05-15', 'YYYY-MM-DD'), 60);
+INSERT INTO Orders (OrderID, RestaurantID, CustomerID, OrderDate, Amount)
+Values (8, 901, 108, TO_DATE('2024-07-01', 'YYYY-MM-DD'), 20);
+
+UPDATE Restaurants
+SET Location = 'Rome' Where CuisineType = 'Italian' AND Location != 'Rome';
+
+DELETE FROM Orders
+WHERE OrderDate > TO_DATE('01-12-2024', 'DD-MM-YYYY') and Amount > 50 or RestaurantID = 901;
+
+select * from orders
+where OrderDate Between to_date('15-06-2024', 'DD-MM-YYYY') and to_date('15-07-2024','DD-MM-YYYY')
+AND Amount > 20 and RestaurantID != 1001;
+
+select distinct(CustomerID) from Orders
+Where Amount > 25 and OrderDate between to_date('01-06-2024', 'DD-MM-YYYY') and to_date('15-07-2024','DD-MM-YYYY') or RestaurantID = 2;
+
+
+Q) Mia is developing a food delivery application to manage restaurants, menus, and orders. 
+   The system needs to handle data across three main types: RESTAURANTS, MENUS, and ORDERS.
+
+Ans)
+
+CREATE TABLE Restaurants(RestaurantID number not null,
+                         Name varchar2(255) not null,
+                         Rating number not null);
+                         
+                         
+create table Menus (MenuID number not null,
+                    RestaurantID number not null,
+                    ItemName varchar2(255) not null,
+                    Price number,
+                    constraint chk_price check (Price>0));
+                    
+create table Orders(OrderID number not null,
+                    MenuID number not null,
+                    Quantity number,
+                    constraint chk_quantity check (Quantity>0));
+                    
+alter table Menus drop constraint chk_price;
+alter table Menus add constraint chk_price_new check(Price>=5);
+alter table Orders drop constraint chk_quantity;
+alter table Orders Add constraint chk_quantity_new check(Quantity between 1 and 100);
+
+
+Q) Arira is a career consultant who works with various companies to help them find suitable candidates for their job openings. 
+   She uses an online job portal that manages job postings and applications. 
+   To implement this task the system needs to handle three main types of data: EMPLOYERS, JOBPOSTINGS, APPLICATIONS
+   Write the DDL statements to create the following tables with the mentioned constraints to handle the data :
+
+Ans)
+
+create table Employers(EmployerID number not null primary key,
+CompanyName varchar2(100) not null,
+Email varchar2(100) not null,
+constraint unique_email unique(Email));
+
+
+create table JobPostings(JobID number not null primary key,
+EmployerID number not null,
+JobTitle varchar2(100) not null,
+constraint unique_title unique (JobTitle));
+
+
+create table Applications(ApplicationID number not null primary key,
+JobID number not null,
+ApplicantName varchar2(100)not null);
+
+
+Q) Diego is working as an intern at a vacation rental company. His task is to manage and analyze rental and booking data. 
+   The database admin has already created two tables, Rentals and Bookings. 
+   Diego needs to perform several operations on these tables based on specific conditions.
+
+
+Ans) 
+
+insert into rentals values(1,'Beach', 120, to_date('2024-07-25', 'YYYY-MM-DD'), to_date('2024-09-10','YYYY-MM-DD'));
+insert into rentals values(2,'Mountain', 250, to_date('2024-08-01', 'YYYY-MM-DD'), to_date('2024-10-01','YYYY-MM-DD'));
+insert into rentals values(3,'City', 90, to_date('2024-07-20', 'YYYY-MM-DD'), to_date('2024-08-30','YYYY-MM-DD'));
+insert into rentals values(4,'Beach', 80, to_date('2024-07-28', 'YYYY-MM-DD'), to_date('2024-09-15','YYYY-MM-DD'));
+insert into rentals values(5,'Forest', 150, to_date('2024-07-22', 'YYYY-MM-DD'), to_date('2024-09-20','YYYY-MM-DD'));
+
+
+insert into Bookings values (1, 1, 201,to_date('2024-07-01', 'YYYY-MM-DD'));
+insert into Bookings values (2, 2, 202,to_date('2023-12-15', 'YYYY-MM-DD'));
+insert into Bookings values (3, 3, 203,to_date('2024-01-10', 'YYYY-MM-DD'));
+insert into Bookings values (4, 4, 204,to_date('2023-11-20', 'YYYY-MM-DD'));
+insert into Bookings values (5, 5, 205,to_date('2024-07-15', 'YYYY-MM-DD'));
+
+
+update Rentals
+set PricePerNight = PricePerNight - (0.1*PricePerNight)
+Where PricePerNight > 100;
+
+delete from Bookings
+where BookingDate < to_date('2024-01-01', 'YYYY-MM-DD') and RentalID not in (101, 102, 103);
+
+select * from Rentals where location = 'Beach' and PricePerNight < 150;
+
+
+Q) Emily is developing a digital content platform to manage creators, content, and subscriptions. 
+   The system needs to handle data across three main types: CREATORS, CONTENT, and SUBSCRIPTIONS.
+   Write the DDL statements to create the following tables:
+
+Ans)
+
+create table Creators(CreatorID number not null,
+ChannelName varchar2(255),
+Email varchar2(255),
+constraint CREATORs_UK_EMAIL unique (Email));
+
+create table Content(ContentID number not null,
+CreatorID number not null,
+Title varchar2(255));
+
+create table Subscriptions(SubscriptionID number not null,
+ContentID number not null,
+SubscriberName varchar2(255));
+
+alter table Creators drop constraint CREATORs_UK_EMAIL;
+alter table Creators Add constraint CREATORS_UK_CHANNELNAME unique (ChannelName);
+alter table Content add constraint CONTENT_UK_TITLE unique(Title);

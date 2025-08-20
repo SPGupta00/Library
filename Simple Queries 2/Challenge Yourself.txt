@@ -1,0 +1,58 @@
+Q) Rajesh is managing an e-commerce system where he needs to track order details and product information. 
+   He needs to describe the structure of the tables related to orders and products to understand the column details and constraints. 
+   Additionally, he needs to retrieve certain records to verify the data inserted.
+
+Ans)
+
+SELECT * FROM ORDERS WHERE Quantity > 50;
+SELECT COUNT(*) FROM PRODUCTS WHERE Category = 'ELECTRONICS';
+DESC ORDERS;
+SELECT Name, Cost_price FROM PRODUCTS WHERE Cost_price = 1200;
+
+
+Q) Raam is managing a banking system where he needs to track deposits and account information. 
+   He needs to describe the structure of the tables related to deposits and accounts to understand the column details and constraints. 
+   Additionally, he needs to retrieve certain records to verify the data inserted.
+
+Ans)
+
+SELECT * FROM ACCOUNTS WHERE Balance > 5000;
+SELECT Accounts.Client_name, Deposits.amount FROM Accounts inner join deposits 
+ON accounts.account_id = deposits.account_id;
+DESC DEPOSITS;
+SELECT * FROM ACCOUNTS;
+
+
+Q) Samantha is managing an e-commerce database, where she tracks the details of clients and products. 
+   She needs to describe the structure of the tables related to clients and products to understand the column details and constraints.
+   Additionally, she needs to retrieve certain records to verify the data inserted.
+
+Ans)
+
+SELECT Name FROM CLIENTS WHERE Balance > 4000;
+SELECT Name FROM PRODUCTS WHERE Category = 'ELECTRONICS';
+DESC CLIENTS;
+DESC PRODUCTS;
+
+
+Q) Samantha is managing an e-commerce database, where she tracks the details of clients and products. 
+   She needs to describe the structure of the tables related to clients and products to understand the column details and constraints. 
+   Additionally, she needs to retrieve certain records to verify the data inserted.
+
+Ans)
+
+SELECT Name FROM PRODUCTS WHERE Category = 'CLOTHING';
+SELECT BALANCE FROM CLIENTS WHERE Balance < 5000;
+DESC CLIENTS;
+SELECT NAME FROM PRODUCTS WHERE Cost_price BETWEEN 300 AND 500;
+
+
+Q) Raam is managing a maritime database for a shipping company, where he tracks the details of sailors and boats. 
+   He needs to describe the structure of the tables related to sailors and boats to understand the column details and constraints. 
+   Additionally, he needs to retrieve certain records to verify the data inserted.
+
+Ans)
+
+SELECT NAME FROM SAILORS WHERE Rating > 7;
+SELECT Capacity FROM BOATS;
+SELECT Name FROM SAILORS WHERE City = 'MUMBAI' OR City = 'KOLKATA';

@@ -1,0 +1,58 @@
+Q) Anna is managing an employee system for her company. She wants to retrieve employee and department information.
+
+Ans)
+
+DESC EMPLOYEES;
+DESC DEPARTMENTS;
+SELECT * FROM EMPLOYEES WHERE Salary > 50000;
+SELECT * FROM EMPLOYEES WHERE Join_DATE < TO_DATE('2020-01-01', 'YYYY-MM-DD');
+
+
+Q) John is building a library management system. He needs to retrieve the structure of the BOOKS and BORROWERS tables, along with some information about the books and borrowers.
+
+Ans)
+
+DESC BOOKS;
+DESC BORROWERS;
+SELECT * FROM BOOKS WHERE Title = 'THE GREAT GATSBY';
+SELECT * FROM BORROWERS WHERE Membership_date > TO_DATE('2020-12-31', 'YYYY-MM-DD');
+
+
+Q) Tom is building a simple customer order management system and needs to view the order data and customer details.
+
+Ans)
+
+DESC ORDERS;
+DESC CUSTOMERS;
+SELECT * FROM ORDERS WHERE Order_Status = 'SHIPPED';
+SELECT * FROM CUSTOMERS WHERE Customer_Name LIKE 'S%';
+
+
+Q) Sam is managing an online store's product catalog and needs to retrieve product details and inventory information.
+
+Ans)
+
+DESC PRODUCTS;
+DESC INVENTORY;
+SELECT * FROM PRODUCTS WHERE Price > 100;
+SELECT * FROM INVENTORY WHERE Location = 'WAREHOUSE';
+
+
+Q) Lily is managing the student records for a school system and needs to retrieve student and class data.
+
+Ans)
+
+DESC STUDENTS;
+DESC CLASSES;
+SELECT * FROM STUDENTS WHERE Age = 15;
+SELECT * FROM CLASSES WHERE Teacher_Name = 'MS. SMITH';
+
+
+Q) Jack is managing an inventory system for a store and needs to retrieve item and location information.
+
+Ans)
+
+DESC ITEMS;
+DESC LOCATIONS;
+SELECT * FROM ITEMS WHERE Quantity < 30;
+SELECT * FROM LOCATIONS WHERE CITY = 'NEW YORK';

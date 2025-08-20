@@ -1,0 +1,164 @@
+Q) A financial management application needs to manage accounts and their transactions. 
+You are tasked with writing queries to create and manipulate these tables. Assume that current date is '2024-01-01'. 
+The table structure is shown below:
+
+Ans)
+
+INSERT INTO Accounts(AccountID, AccountHolder, Balance) VALUES (101, 'John Doe', 1500);
+INSERT INTO Accounts(AccountID, AccountHolder, Balance) VALUES (102, 'Jane Smith', 2500);
+INSERT INTO Accounts(AccountID, AccountHolder, Balance) VALUES (103, 'Jim Brown', 750);
+INSERT INTO Accounts(AccountID, AccountHolder, Balance) VALUES (104, 'Jake Blues', 500);
+INSERT INTO Accounts(AccountID, AccountHolder, Balance) VALUES (105, 'Jill Green', 1000);
+
+INSERT INTO Transactions(TransactionID, AccountID, TransactionDate, Amount, TransactionType) VALUES (201, 101, TO_DATE('2023-07-01', 'YYYY-MM-DD'), 600, 'Deposit');
+INSERT INTO Transactions(TransactionID, AccountID, TransactionDate, Amount, TransactionType) VALUES (202, 102, TO_DATE('2023-06-15', 'YYYY-MM-DD'), 800, 'Withdrawal');
+INSERT INTO Transactions(TransactionID, AccountID, TransactionDate, Amount, TransactionType) VALUES (203, 103, TO_DATE('2023-05-10', 'YYYY-MM-DD'), 1200, 'Transfer');
+INSERT INTO Transactions(TransactionID, AccountID, TransactionDate, Amount, TransactionType) VALUES (204, 104, TO_DATE('2023-04-20', 'YYYY-MM-DD'), 150, 'Deposit');
+INSERT INTO Transactions(TransactionID, AccountID, TransactionDate, Amount, TransactionType) VALUES (205, 105, TO_DATE('2023-03-15', 'YYYY-MM-DD'), 500, 'Withdrawal');
+INSERT INTO Transactions(TransactionID, AccountID, TransactionDate, Amount, TransactionType) VALUES (206, 104, TO_DATE('2023-02-10', 'YYYY-MM-DD'), 450, 'Transfer');
+INSERT INTO Transactions(TransactionID, AccountID, TransactionDate, Amount, TransactionType) VALUES (207, 105, TO_DATE('2023-01-25', 'YYYY-MM-DD'), 300, 'Deposit');
+
+SELECT * FROM Transactions;
+SELECT * FROM Accounts;
+
+DELETE FROM Transactions
+Where TransactionDate < TO_DATE('2023-01-01', 'YYYY-MM-DD') AND Amount > 200 OR TransactionType = 'Transfer';
+
+SELECT * FROM Transactions
+Where Amount > 1000 AND TransactionDate IN SYSDATE - 10 AND AccountID = 501;
+
+UPDATE Accounts
+SET Balance = Balance+1000
+Where AccountID = 103;
+
+
+Q) Alexander is developing a ride-sharing application to track drivers, vehicles, and trips. 
+   The system needs to handle three main types of data: DRIVERS, VEHICLES, and TRIPS. 
+   Write the DDL statements to create the following tables with the mentioned constraints to handle the data: 
+
+   The DRIVERS table has a named primary key constraint pk_driver.
+   The VEHICLES table has a named primary key constraint pk_vehicle for VehicleID and a named foreign key constraint fk_driver for DriverID.
+   The TRIPS table has a named primary key constraint pk_trip for TripID and a named foreign key constraint fk_vehicle for VehicleID.
+
+Ans)
+
+CREATE TABLE Drivers (DriverID NUMBER,
+                      Name VARCHAR2(100) NOT NULL,
+                      LicenseNumber VARCHAR2(20) NOT NULL,
+                      CONSTRAINT pk_driver PRIMARY KEY (DriverID));
+                      
+                      
+CREATE TABLE Vehicles (VehicleID NUMBER,
+                       DriverID NUMBER NOT NULL,
+                       Make VARCHAR2(50) NOT NULL,
+                       Model VARCHAR2(50) NOT NULL,
+                       CONSTRAINT pk_vehicle PRIMARY KEY (VehicleID),
+                       CONSTRAINT fk_driver FOREIGN KEY (DriverID) References Drivers(DriverID));
+                       
+                       
+CREATE TABLE Trips (TripID NUMBER,
+                    VehicleID NUMBER NOT NULL,
+                    TripDate DATE NOT NULL,
+                    Distance NUMBER NOT NULL,
+                    CONSTRAINT pk_trip PRIMARY KEY (TripID),
+                    CONSTRAINT fk_vehicle FOREIGN KEY (VehicleID) References Vehicles(VehicleID));
+                    
+                    
+Alter Table Vehicles DROP constraint fk_driver;
+
+
+Q) Taylor is responsible for managing the product and supplier details for an online retail platform. 
+   The database includes two crucial tables: Products and Suppliers. 
+   Taylor needs to perform several operations on these tables according to specific requirements. 
+   The structure of the table is given below:
+
+Ans)
+
+INSERT INTO Products (ProductID, ProductName, Category, Price, StockQuantity) Values (1001, 'Smartphone', 'Electronics', 700, 5);
+INSERT INTO Products (ProductID, ProductName, Category, Price, StockQuantity) Values (1002, 'Laptop', 'Electronics', 1200, 8);
+INSERT INTO Products (ProductID, ProductName, Category, Price, StockQuantity) Values (1003, 'Sofa', 'Furniture', 450,20);
+INSERT INTO Products (ProductID, ProductName, Category, Price, StockQuantity) Values (1004, 'Coffee Maker', 'Home Appliances', 120, 12);
+INSERT INTO Products (ProductID, ProductName, Category, Price, StockQuantity) Values (1005, 'Table Lamp', 'Furniture', 85, 25);
+
+
+INSERT INTO Suppliers (SupplierID, SupplierName, ContactEmail) VALUES (1301, 'ABC Electronics', 'contact@abcelectronics.com');
+INSERT INTO Suppliers (SupplierID, SupplierName, ContactEmail) VALUES (1302, 'XYZ Furnishings', 'info@xyzfurnishings.com');
+INSERT INTO Suppliers (SupplierID, SupplierName, ContactEmail) VALUES (1303, 'Home Goods Inc', 'support@homegoods.com');
+INSERT INTO Suppliers (SupplierID, SupplierName, ContactEmail) VALUES (1304, 'Tech World', 'service@techworld.com');
+INSERT INTO Suppliers (SupplierID, SupplierName, ContactEmail) VALUES (1305, 'Luxury Living', 'contact@luxuaryliving.com');
+
+
+UPDATE Products SET Price = Price * 1.10 Where Category = 'Electronics' AND Price > 500 AND StockQuantity < 10;
+
+
+DELETE FROM Products WHERE StockQuantity < 5 AND Category != 'Home Appliances' OR ProductID IN (1001, 1002);
+
+
+SELECT * FROM Products
+WHERE Category = 'Furniture' AND Price BETWEEN 100 AND 500 AND StockQuantity >= 20;
+
+SELECT * FROM Suppliers WHERE SupplierID IN (1301, 1302, 1303, 1304);
+
+Q) Samantha is a data analyst at a fitness center, and she has been given the task of managing exercise and user data. 
+   The database admin has already created two tables, Exercises and Users. 
+   Samantha needs to perform several operations on these tables based on specific conditions. 
+   The structure of the tables is shown below:
+
+Ans)
+
+INSERT INTO Exercises (ExerciseID, ExerciseType, CaloriesBurned, ExerciseDate) Values (4, 'Cardio', 600,To_DATE('2023-06-30', 'YYYY-MM-DD'));
+INSERT INTO Exercises (ExerciseID, ExerciseType, CaloriesBurned, ExerciseDate) Values (5, 'Strength Training', 350,To_DATE('2024-07-14', 'YYYY-MM-DD'));
+INSERT INTO Exercises (ExerciseID, ExerciseType, CaloriesBurned, ExerciseDate) Values (6, 'Walking', 250,To_DATE('2024-07-10', 'YYYY-MM-DD'));
+INSERT INTO Exercises (ExerciseID, ExerciseType, CaloriesBurned, ExerciseDate) Values (7, 'Swimming', 280,To_DATE('2024-07-12', 'YYYY-MM-DD'));
+INSERT INTO Exercises (ExerciseID, ExerciseType, CaloriesBurned, ExerciseDate) Values (8, 'Cycling', 290,To_DATE('2024-07-14', 'YYYY-MM-DD'));
+
+
+INSERT INTO Users (UserID, UserName, Email) Values (1101, 'Alice', 'alice@example.com');
+INSERT INTO Users (UserID, UserName, Email) Values (1102, 'Bob', 'bob@example.com');
+INSERT INTO Users (UserID, UserName, Email) Values (1103, 'Charlie', 'charlie@example.com');
+INSERT INTO Users (UserID, UserName, Email) Values (1104, 'David', 'david@example.com');
+INSERT INTO Users (UserID, UserName, Email) Values (1105, 'Eve', 'eve@example.com');
+
+
+Update Exercises
+Set CaloriesBurned = CaloriesBurned + 100
+Where ExerciseDate BETWEEN To_date('2024-07-08', 'YYYY-MM-DD') AND To_date('2024-07-15', 'YYYY-MM-DD') AND CaloriesBurned < 300 AND ExerciseType != 'Yoga';
+
+DELETE FROM Exercises
+WHERE ExerciseDate < To_date('2023-07-01', 'YYYY-MM-DD') AND CaloriesBurned > 500 OR ExerciseType = 'Cardio';
+
+Select * FROM Exercises Where ExerciseDate BETWEEN To_date('2024-06-15', 'YYYY-MM-DD') AND To_date('2024-07-15', 'YYYY-MM-DD') AND CaloriesBurned > 200 AND ExerciseType != 'Strength Training';
+
+SELECT * From Users Where UserID = 1101 OR UserID = 1102;
+
+Q) Ben is developing a health monitoring app to track user activities and vital signs. 
+   The app needs to handle three main types of data: USERS, ACTIVITIES, and VITALS
+   Write the DDL statements to create the following tables with the mentioned constraints to handle the data: 
+
+Ans)
+
+CREATE TABLE Users (UserID NUMBER PRIMARY KEY NOT NULL,
+                    UserName VARCHAR2(100),
+                    Email VARCHAR2(100),
+                    RegistrationDate DATE);
+                    
+                    
+CREATE TABLE Activities (ActivityID NUMBER PRIMARY KEY NOT NULL,
+                         UserID NUMBER,
+                         ActivityType VARCHAR2(50),
+                         ActivityDate DATE);
+                         
+                         
+CREATE TABLE Vitals (VitalID NUMBER PRIMARY KEY NOT NULL,
+                     UserID NUMBER,
+                     HeartRate NUMBER,
+                     BloodPressure Varchar2(20),
+                     RecordedDate DATE);
+                     
+                     
+ALTER TABLE Users DROP PRIMARY KEY;
+
+ALTER TABLE Users ADD Primary KEY (Email);
+
+ALTER TABLE Activities DROP PRIMARY KEY;
+

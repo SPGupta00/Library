@@ -1,0 +1,153 @@
+Q) Alice is developing a blockchain-based supply chain tracking system to manage the movement of products 
+   from manufacturers to customers. The system needs to handle three main types of data: 
+   Products, Shipments, and Transactions.
+
+Ans)
+
+CREATE table Products (ProductID  NUMBER,
+                       Name Varchar2(100),
+                       Description Varchar2(255),
+                       Origin Varchar2(100));
+                       
+                       
+CREATE table Shipments (ShipmentID  NUMBER,
+                        ProductID NUMBER,
+                        Origin Varchar2(100),
+                        Destination Varchar2(100),
+                        ShipmentDate date);
+                        
+                        
+CREATE table Transactions (TransactionID  NUMBER,
+                           ShipmentID NUMBER,
+                           TransactionDate Date,
+                           Status Varchar2(50));
+                           
+                           
+Alter table Products rename to SupplyChainProducts;
+
+
+Alter table Shipments add ShipmentStatus Varchar2(50);
+
+
+Alter table SupplyChainProducts add Primary key(ProductID);
+
+
+Alter table Shipments add Foreign key (ProductID) 
+References SupplyChainProducts(ProductID);
+
+
+Alter table Shipments add Unique (ShipmentID);
+
+
+Q) Lucas is developing a food delivery application and needs to store data about orders and restaurants. 
+   He has two tables: one for restaurants and one for the orders placed at these restaurants.
+
+Ans)
+
+CREATE Table Restaurants (RestaurantID NUMBER Primary Key,
+                          RestaurantName VARCHAR2(30),
+                          CuisineType VARCHAR2(30),
+                          Unique (RestaurantName));
+                          
+                          
+CREATE Table Orders (OrderID NUMBER Primary Key,
+                     RestaurantID NUMBER,
+                     TotalPrice NUMBER,
+                     Foreign key (RestaurantID) references Restaurants(RestaurantID));
+                     
+                     
+INSERT Into Restaurants(RestaurantID, RestaurantName, CuisineType) Values (1, 'Pizza Palace', 'Italian');
+INSERT Into Restaurants(RestaurantID, RestaurantName, CuisineType) Values (2, 'Sushi Spot', 'Japanese');
+INSERT Into Restaurants(RestaurantID, RestaurantName, CuisineType) Values (3, 'Burger King', 'American');
+
+INSERT Into Orders(OrderID, RestaurantID, TotalPrice) Values (1, 1, 25);
+INSERT Into Orders(OrderID, RestaurantID, TotalPrice) Values (2, 2, 30);
+INSERT Into Orders(OrderID, RestaurantID, TotalPrice) Values (3, 3, 15);
+
+
+Q) Olivia is developing a simple ticket booking system for a local cinema. 
+   She needs to create two tables to store data about movies and tickets.
+
+Ans)
+
+CREATE TABLE Movies (MovieTitle VARCHAR2(30),
+                     ReleaseYear NUMBER);
+                     
+                     
+CREATE TABLE Tickets (TicketID NUMBER,
+                      MovieID NUMBER,
+                      TicketPrice NUMBER);
+                      
+
+INSERT INTO Movies(MovieTitle, ReleaseYear) VALUES ('The Avengers', 2012);
+INSERT INTO Movies(MovieTitle, ReleaseYear) VALUES ('Iron Man', 2008);
+INSERT INTO Movies(MovieTitle, ReleaseYear) VALUES ('Black Panther', 2018);
+
+INSERT INTO Tickets(TicketID, MovieID, TicketPrice) VALUES (1, 1, 10);
+INSERT INTO Tickets(TicketID, MovieID, TicketPrice) VALUES (2, 2, 12);
+INSERT INTO Tickets(TicketID, MovieID, TicketPrice) VALUES (3, 3, 15);
+
+
+Q) Syed is tasked with setting up the database schema for managing employee information.
+
+Ans)
+
+CREATE TABLE Employee (Emp_name VARCHAR2(30),
+                       Street VARCHAR2(30),
+                       City VARCHAR2(30));
+                       
+                       
+INSERT INTO Employee (Emp_name, Street, City) VALUES ('Adam', 'Spring', 'Pittsfield');
+INSERT INTO Employee (Emp_name, Street, City) VALUES ('Brooks', 'Senator', 'Brooklyn');
+INSERT INTO Employee (Emp_name, Street, City) VALUES ('Curry', 'North', 'Rye');
+INSERT INTO Employee (Emp_name, Street, City) VALUES ('Demalo', 'SunShine', 'San Deago');
+
+
+Alter table Employee add primary key (Emp_name);
+Alter table Employee Modify Street Varchar2(30) Not null;
+
+
+Q) Leka is working as an intern at a vacation rental company. Her task is to manage and analyze rental and booking data. 
+   The database admin has already created two tables, Rentals and Bookings. 
+   Leka needs to perform several operations on these tables based on specific conditions.
+
+Ans)
+
+INSERT INTO Bookings(BookingID, RentalID, CustomerID, BookingDate)
+VALUES (1, 1, 201, TO_DATE('2024-07-01', 'YYYY-MM-DD'));
+
+INSERT INTO Bookings(BookingID, RentalID, CustomerID, BookingDate)
+VALUES (2, 2, 202, TO_DATE('2023-12-15', 'YYYY-MM-DD'));
+
+INSERT INTO Bookings(BookingID, RentalID, CustomerID, BookingDate)
+VALUES (3, 3, 203, TO_DATE('2024-01-10', 'YYYY-MM-DD'));
+
+INSERT INTO Bookings(BookingID, RentalID, CustomerID, BookingDate)
+VALUES (4, 4, 204, TO_DATE('2023-11-20', 'YYYY-MM-DD'));
+
+INSERT INTO Bookings(BookingID, RentalID, CustomerID, BookingDate)
+VALUES (5, 5, 205, TO_DATE('2024-07-15', 'YYYY-MM-DD'));
+
+INSERT INTO Rentals(RentalID, Location, PricePerNight, AvailableFrom, AvailableTo)
+VALUES (1, 'Beach', 120, TO_DATE('2024-07-25', 'YYYY-MM-DD'), TO_DATE('2024-09-10', 'YYYY-MM-DD'))
+
+INSERT INTO Rentals(RentalID, Location, PricePerNight, AvailableFrom, AvailableTo)
+VALUES (2, 'Mountain', 250, TO_DATE('2024-08-01', 'YYYY-MM-DD'), TO_DATE('2024-10-01', 'YYYY-MM-DD'))
+
+INSERT INTO Rentals(RentalID, Location, PricePerNight, AvailableFrom, AvailableTo)
+VALUES (3, 'City', 90, TO_DATE('2024-07-20', 'YYYY-MM-DD'), TO_DATE('2024-08-30', 'YYYY-MM-DD'))
+
+INSERT INTO Rentals(RentalID, Location, PricePerNight, AvailableFrom, AvailableTo)
+VALUES (4, 'Beach', 80, TO_DATE('2024-07-28', 'YYYY-MM-DD'), TO_DATE('2024-09-15', 'YYYY-MM-DD'))
+
+INSERT INTO Rentals(RentalID, Location, PricePerNight, AvailableFrom, AvailableTo)
+VALUES (5, 'Forest', 150, TO_DATE('2024-07-22', 'YYYY-MM-DD'), TO_DATE('2024-09-20', 'YYYY-MM-DD'))
+
+Update Rentals Set PricePerNight = PricePerNight * 0.8 
+Where Location IN ('Forest', 'Mountain') AND PricePerNight > 120;
+
+Delete from Bookings WHERE BookingDate < TO_DATE('2024-02-01', 'YYYY-MM-DD') AND CustomerID <203;
+
+SELECT * FROM Rentals
+Where AvailableFrom BETWEEN TO_DATE('2024-07-01', 'YYYY-MM-DD') AND TO_DATE('2024-08-31', 'YYYY-MM-DD')
+AND PricePerNight < 100;

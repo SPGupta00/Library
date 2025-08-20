@@ -1,0 +1,54 @@
+Q) Alex is managing a refund system for events. He needs to track the refund status and calculate the number of tickets refunded for each event. 
+   You need to list the EventID, TicketPrice, and TicketRefunded from the TICKETS table. 
+   Additionally, describe the EVENTS table to get a better understanding of event details.
+
+Ans)
+
+SELECT EventID, TicketPrice, TicketRefunded FROM TICKETS;
+DESC EVENTS;
+SELECT * FROM TICKETS WHERE TicketRefunded > 10;
+DELETE FROM TICKETS WHERE TicketID = 3;
+
+
+Q) Alex is developing an event management system. He needs to track details of events and ticket sales for those events. 
+   You need to list the EventID, EventName, and TicketSold from the EVENTS table, and also describe the TICKETS table to understand ticket sale details.
+
+Ans)
+
+SELECT EventID, EventName FROM EVENTS;
+DESC TICKETS;
+SELECT * FROM TICKETS WHERE TicketSold > 150;
+DELETE FROM TICKETS WHERE TicketID = 4;
+
+
+Q) Lucas is developing an inventory management system to track products and their suppliers. 
+   He needs to keep track of product details and the suppliers who provide those products. 
+   You need to list the ProductID, ProductName, and StockQuantity from the PRODUCTS table. 
+   Additionally, describe the SUPPLIERS table to get a better understanding of the supplier details.
+
+Ans)
+
+SELECT ProductID, ProductName, StockQuantity FROM PRODUCTS;
+DESC SUPPLIERS;
+SELECT * FROM PRODUCTS WHERE StockQuantity > 150;
+DELETE FROM PRODUCTS WHERE ProductID = 3;
+
+
+Q) John is working on a farm management system to track crop planting and farm workers' work hours. 
+   He needs to track details about the crops grown on different farm fields and the workers working on them. 
+   You need to list the CropID, CropName, and AreaPlanted from the CROPS table, and also describe the WORKERS table to get a better understanding of farm workers’ details.
+
+Ans)
+
+SELECT CropID, CropName, AreaPlanted FROM CROPS;
+DESC WORKERS;
+SELECT * FROM WORKERS WHERE HoursWorked > 40;
+DELETE FROM WORKERS WHERE WorkerID = 2;
+
+
+Q) Sophia is developing an online streaming platform to manage user subscriptions to different content genres like movies, series, and documentaries. 
+   You need to track user details and their subscription plans. 
+   You need to list UserID, Username, and SubscriptionStatus from the USERS table, and also describe the SUBSCRIPTIONS table to understand the subscription details.
+
+Ans)
+

@@ -1,0 +1,54 @@
+Q) John is managing a farm system where he tracks the crops planted and the harvest dates. 
+   You need to list the CropID, CropName, and HarvestDate from the CROPS table, and also describe the HARVESTS table to get a better understanding of the harvest data.
+
+Ans)
+
+SELECT CropID, CropName FROM CROPS;
+DESC HARVESTS;
+SELECT * FROM HARVESTS WHERE HarvestAmount > 1000;
+DELETE FROM HARVESTS WHERE HarvestID = 3;
+
+
+Q) Marcus is developing an online learning platform where students enroll in different course categories. 
+   He needs to track the enrollment details and the educational content being offered. 
+   You need to list the SubscriptionID, UserID, and SubscriptionPlan from the SUBSCRIPTIONS table, and also describe the CONTENT table to get a better understanding of the educational content offered on the platform.
+
+Ans)
+
+SELECT UserID, SubscriptionPlan FROM SUBSCRIPTIONS;
+DESC CONTENT;
+
+
+Q) Dr. Sam is managing a medical clinic appointment system to track patient details and their scheduled appointments. 
+   You need to list the PatientID, PatientName, and AppointmentDate from the PATIENTS table, and also describe the APPOINTMENTS table to understand the appointment scheduling details.
+
+Ans)
+
+SELECT PatientID, PatientName FROM PATIENTS;
+DESC APPOINTMENTS;
+SELECT * FROM APPOINTMENTS WHERE AppointmentDate > TO_DATE('2023-08-03', 'YYYY-MM-DD');
+DELETE FROM APPOINTMENTS WHERE AppointmentID = 2;
+
+
+Q) Sophia is developing an online streaming platform where users subscribe to different content genres. 
+   She needs to track the subscription details and the content being offered. 
+   You need to list the SubscriptionID, UserID, and SubscriptionPlan from the SUBSCRIPTIONS table, and also describe the CONTENT table to get a better understanding of the content offered on the platform..
+
+Ans)
+
+SELECT SubscriptionID, UserID, SubscriptionPlan FROM SUBSCRIPTIONS;
+DESC CONTENT;
+SELECT * FROM CONTENT WHERE Genre = 'Action';
+DELETE FROM SUBSCRIPTIONS WHERE SubscriptionID = 3;
+
+
+Q) Lucas is developing an inventory system where he tracks products and their suppliers. 
+   He needs to list product details and supplier information. 
+   You need to list the ProductID, ProductName, and StockQuantity from the PRODUCTS table, and also describe the SUPPLIERS table to get a better understanding of the supplier details.
+
+Ans)
+
+SELECT ProductID, ProductName, StockQuantity FROM PRODUCTS;
+DESC SUPPLIERS;
+SELECT * FROM PRODUCTS WHERE StockQuantity > 150;
+DELETE FROM PRODUCTS WHERE ProductID = 3;

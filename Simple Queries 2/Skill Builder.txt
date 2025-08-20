@@ -1,0 +1,59 @@
+Q) Raam is managing a banking system where he needs to track deposits and account information. 
+   He needs to describe the structure of the tables related to deposits and accounts to understand the column details and constraints. 
+   Additionally, he needs to retrieve certain records to verify the data inserted.
+
+Ans)
+
+DESC DEPOSITS;
+DESC ACCOUNTS;
+Select * FROM ACCOUNTS WHERE BALANCE > 2200;
+SELECT Client_Name FROM ACCOUNTS WHERE CITY = 'NAGPUR';
+
+
+Q) Olivia is developing a banking system where she needs to track customer deposits and employee information. 
+   To get a better understanding of the system, she needs to view the structure of the tables related to deposits and employees.
+
+Ans)
+
+SELECT Name FROM DEPOSITORS WHERE Amount > 4000;
+SELECT * FROM EMPLOYEES WHERE Salary < 22000;
+DESC DEPOSITORS;
+DESC EMPLOYEES;
+
+
+Q) Rajesh is managing an e-commerce system where he needs to track order details and product information. 
+   He needs to describe the structure of the tables related to orders and products to understand the column details and constraints. 
+   Additionally, he needs to retrieve certain records to verify the data inserted.
+
+Ans)
+
+DESC ORDERS;
+DESC PRODUCTS;
+SELECT Name, Cost_Price FROM PRODUCTS WHERE Cost_Price > 250;
+SELECT Product_ID, Quantity FROM ORDERS WHERE Quantity < 120;
+SELECT * FROM ORDERS;
+
+
+Q) Samantha is managing an e-commerce database, where she tracks the details of clients and products. 
+   She needs to describe the structure of the tables related to clients and products to understand the column details and constraints. 
+   Additionally, she needs to retrieve certain records to verify the data inserted.
+
+Ans)
+
+DESC CLIENTS;
+DESC PRODUCTS;
+SELECT Name FROM CLIENTS WHERE City = 'MUMBAI';
+SELECT * FROM PRODUCTS WHERE selling_price < 500;
+
+
+Q) Raam is managing a maritime database for a shipping company, where he tracks the details of sailors and boats. 
+   He needs to describe the structure of the tables related to sailors and boats to understand the column details and constraints. 
+   Additionally, he needs to retrieve certain records to verify the data inserted.
+
+Ans)
+
+DESC SAILORS;
+DESC BOATS;
+SELECT Name FROM SAILORS WHERE age > 25;
+SELECT Name FROM BOATS WHERE Travel_date = TO_DATE('98-OCT-10', 'YY-MON-DD');
+
