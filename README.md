@@ -1,16 +1,13 @@
 # Library
-Just some stuff, I think you want to take a look at.
+Just a few notes I’d like you all to review.
 
-I as the author request you all to be smart and verify.
+As the author, I request everyone to be mindful and verify carefully.
 
-I think I dont need to tell what to verify.
+I don’t think I need to explain what needs to be verified — I trust you’ll understand.
+I hope each of you passes this small test of comprehension.
 
-May you all pass your in understanding what I mean by verify
+When making changes, please clearly mention them in the commit message and description.
 
-Please clearly mention what changes you have made( If any) in the commit message and description
+Also, remember: the questions provided are only for reference and may differ from what appears in your own system.
 
-
-Remember the questions are only for reference and may differ from what you see in your system.
-
-
-Thank You all :)
+Thank you all!
